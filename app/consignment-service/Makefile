@@ -11,6 +11,8 @@ run:
 		-e MICRO_SERVER_ADDRESS=:50051 \
 		-e MICRO_REGISTRY_ADDRESS=mdns \
 		consignment-service
+
+		# --net="host" \
 		# --name consignment-service \
 		
 		

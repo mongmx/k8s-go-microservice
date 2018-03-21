@@ -83,6 +83,9 @@ func main() {
 		micro.Version("latest"),
 	)
 
+	// Init will parse the command line flags.
+	srv.Init()
+
 	// Register our service with the gRPC server, this will tie our
 	// implementation into the auto-generated interface code for our
 	// protobuf definition.
