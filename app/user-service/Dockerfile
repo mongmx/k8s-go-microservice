@@ -16,6 +16,6 @@ RUN apk --no-cache add ca-certificates
 
 RUN mkdir /app
 WORKDIR /app
-COPY --from=builder /go/src/github.com/mongmx/mymicro/app/user-service/user-service .
+COPY --from=builder /go/src/github.com/mongmx/mymicro/app/user-service/user-service /go/src/github.com/mongmx/mymicro/app/user-service/wait-for ./
 
-CMD ["./user-service"]
+CMD ["./wait-for", "database:5432", "--", "./user-service"]
