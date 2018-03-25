@@ -52,6 +52,15 @@ services:
     depends_on:
       - database
 
+  email-service:
+    build: ./email-service
+    ports:
+      - 50054:50051
+    environment:
+      MICRO_ADDRESS: ":50051"
+      MICRO_REGISTRY: "consul"
+      MICRO_REGISTRY_ADDRESS: "consul"
+
   datastore:
     image: mongo
     ports:
@@ -61,3 +70,8 @@ services:
     image: postgres
     ports:
       - 5432:5432
+
+  broker:
+    image: nats
+    ports:
+      - 4222:4222
