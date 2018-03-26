@@ -67,6 +67,8 @@ func (srv *service) Auth(ctx context.Context, req *pb.User, res *pb.Token) error
 
 func (srv *service) Create(ctx context.Context, req *pb.User, res *pb.Response) error {
 
+	log.Println("Creating user: ", req)
+
 	// Generates a hashed version of our password
 	hashedPass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
 	if err != nil {

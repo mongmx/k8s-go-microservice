@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/micro/go-micro"
+	_ "github.com/micro/go-plugins/registry/consul"
 	pb "github.com/mongmx/mymicro/app/user-service/proto/user"
 )
 
@@ -33,8 +34,9 @@ func main() {
 	srv := micro.NewService(
 
 		// This name must match the package name given in your protobuf definition
-		micro.Name("go.micro.srv.user"),
-		micro.Version("latest"),
+		micro.Name("shippy.user"),
+		// micro.Name("go.micro.srv.user"),
+		// micro.Version("latest"),
 	)
 
 	// Init will parse the command line flags.

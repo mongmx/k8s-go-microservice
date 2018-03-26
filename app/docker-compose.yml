@@ -61,6 +61,15 @@ services:
       MICRO_REGISTRY: "consul"
       MICRO_REGISTRY_ADDRESS: "consul"
 
+  micro:
+    image: microhq/micro
+    ports:
+      - 8080:8080
+    environment:
+      MICRO_REGISTRY: "consul"
+      MICRO_REGISTRY_ADDRESS: "consul"
+    command: ["api", "--handler=rpc", "--address=:8080", "--namespace=shippy"]
+
   datastore:
     image: mongo
     ports:
