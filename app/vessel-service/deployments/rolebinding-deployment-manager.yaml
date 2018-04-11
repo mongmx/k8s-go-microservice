@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: deployment-manager-binding
+  namespace: test # default
+subjects:
+- kind: ServiceAccount
+  name: test # default
+  namespace: test # default
+roleRef:
+  kind: Role
+  name: deployment-manager
+  apiGroup: rbac.authorization.k8s.io

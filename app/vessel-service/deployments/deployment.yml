@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: test
+  name: vessel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vessel
+  template:
+    metadata:
+      labels:
+        app: vessel
+    spec:
+      serviceAccountName: test
+      containers:
+      - name: vessel-service
+        image: asia.gcr.io/micro-umx/vessel-service:latest
+        imagePullPolicy: Always
+        command: [
+          "./vessel-service",
+          "--selector=static",
+          "--server_address=:8080",
+        ]
+        env:
+        - name: DB_HOST
+          value: "mongo:27017"
+        - name: UPDATED_AT
+          value: "Mon 19 Mar 2018 12:05:58 GMT"
+        ports:
+        - containerPort: 8080
+          name: vessel-port

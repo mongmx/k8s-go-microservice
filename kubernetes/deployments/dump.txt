@@ -1,0 +1,37 @@
+== Info:   Trying 35.185.188.54...
+== Info: Connected to 35.185.188.54 (35.185.188.54) port 80 (#0)
+=> Send header, 134 bytes (0x86)
+0000: POST /rpc HTTP/1.1
+0014: Host: 35.185.188.54
+0029: User-Agent: curl/7.47.0
+0042: Accept: */*
+004f: Content-Type: application/json
+006f: Content-Length: 199
+0084: 
+=> Send data, 199 bytes (0xc7)
+0000: {.    "request": { .        "name": "test", .        "capacity":
+0040:  200, .        "max_weight": 100000, .        "available": true 
+0080: .    },.    "method": "VesselService.Create",.    "service": "ve
+00c0: ssel".}
+== Info: upload completely sent off: 199 out of 199 bytes
+<= Recv header, 17 bytes (0x11)
+0000: HTTP/1.1 200 OK
+<= Recv header, 40 bytes (0x28)
+0000: Access-Control-Allow-Credentials: true
+<= Recv header, 106 bytes (0x6a)
+0000: Access-Control-Allow-Headers: Content-Type, Content-Length, Acce
+0040: pt-Encoding, X-CSRF-Token, Authorization
+<= Recv header, 63 bytes (0x3f)
+0000: Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE
+<= Recv header, 20 bytes (0x14)
+0000: Content-Length: 93
+<= Recv header, 32 bytes (0x20)
+0000: Content-Type: application/json
+<= Recv header, 37 bytes (0x25)
+0000: Date: Fri, 06 Apr 2018 18:34:26 GMT
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 93 bytes (0x5d)
+0000: {"vessel":{"capacity":200,"max_weight":100000,"name":"test","ava
+0040: ilable":true},"created":true}
+== Info: Connection #0 to host 35.185.188.54 left intact

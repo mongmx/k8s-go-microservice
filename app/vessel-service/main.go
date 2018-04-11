@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/micro/go-micro"
+	k8s "github.com/micro/kubernetes/go/micro"
 	pb "github.com/mongmx/mymicro/app/vessel-service/proto/vessel"
 )
 
@@ -35,6 +36,7 @@ func main() {
 	defer session.Close()
 
 	if err != nil {
+		log.Println(host)
 		log.Fatalf("Error connecting to datastore: %v", err)
 	}
 
@@ -42,8 +44,8 @@ func main() {
 
 	createDummyData(repo)
 
-	srv := micro.NewService(
-		micro.Name("go.micro.srv.vessel"),
+	srv := k8s.NewService(
+		micro.Name("shippy.vessel"),
 		micro.Version("latest"),
 	)
 

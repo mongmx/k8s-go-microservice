@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: test
+  name: greeter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: greeter-srv
+    spec:
+      serviceAccountName: test
+      containers:
+      - name: greeter
+        command: [
+          "/greeter-srv",
+          "--server_address=0.0.0.0:8080",
+          "--broker_address=0.0.0.0:10001"
+        ]
+        image: microhq/greeter-srv:kubernetes
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: greeter-port
